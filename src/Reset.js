@@ -1,18 +1,18 @@
 // JavaScript Document
-const Button = (props) => {
+const Reset = (cancel) => {
 	//props is an object
 	
-	const {onClickFunction, children} = props;
+	const {onClickReset, children} = cancel;
 	//This is the same as
 	//const onClickFunction = props.onClickFunction
 	//const buttonText = props.buttonText
 	return (
 		<button 
-			onClick={onClickFunction}
+			onClick={onClickReset}
 		>
-			{children}
+			Reset
 		</button>
 	)
 }
 
-export default Button;  
+export default Reset;  
