@@ -1,38 +1,42 @@
 import './App.css';
-import React from "react";
-import Button from "./Button.js";
+import React, {useState} from "react";
+import {movies} from "./movies.js";
 
 function App() {
-    const [counter, setCounter] = React.useState(0);
 	
-	//the same as this
-	//const counterState = React.useState(0);
-	//	const counter = counterState[0];
-	//	const setCounter = counterState[1];
+	const [currentMovie, setCurrentMovie] = useState(null);
 	
-	const increment = () => {
-		setCounter(counter + 1);
-	}
-	
-	const decrement = () => {
-		setCounter(counter - 1);
-	}
-	
+	console.log(currentMovie);
 	return (
     <div>
-		<p>Counter</p>
+		<h1>Movies</h1>
 		
-		<p>{counter}</p>
+		{
+    		movies.map((movie, index) => {
+        	// this is where the logic happens
+				return (
+					<button key={movie.title} onClick={() => setCurrentMovie(movie)}>
+						<p>{movie.title}</p>
+						<img src={movie.posterUrl} alt="" height={250}/>
+					</button>
+				)
+    		})
+		}
 		
-		
-		<Button
-			onClickFunction={increment}
-			buttonText="+"   //Same as: buttonText={"+"}
-		/>
-		<Button
-			onClickFunction={decrement}
-			buttonText="-"   //Same as: buttonText={"-"}
-		/>
+		{
+			currentMovie ? 
+				<>
+					<p>{currentMovie.title}</p> 
+					<p>{currentMovie.description}</p> 
+					<img src={currentMovie.posterUrl} alt="" height={250}/>
+					<p>{currentMovie.rating}</p>
+					<p>{currentMovie.director}</p>
+					<p>{currentMovie.releaseYear}</p>
+					<p>{currentMovie.categories.join(", ")}</p> 
+				</>
+				: 
+				<p>Please Select a Movie for further deatails</p>
+		}
 		
 	</div>
   );
