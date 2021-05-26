@@ -1,6 +1,6 @@
 {
   "name": "intro-to-react",
-  "homepage": "https://jggeddes.github.io/react-movies",
+  "homepage": "public/index.html",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
